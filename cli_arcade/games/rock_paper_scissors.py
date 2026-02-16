@@ -23,7 +23,7 @@ def play_rps() -> int:
 
     if user == cpu:
         print("🤝 Draw.\n")
-        return 0
+        return -1
     if _beats(user, cpu):
         print("✅ You win!\n")
         return 1

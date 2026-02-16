@@ -20,8 +20,8 @@ def cmd_stats() -> int:
         return 0
 
     for g in GAMES:
-        s = games.get(g.id, {"played": 0, "wins": 0})
-        print(f"- {g.name}: played={s['played']} wins={s['wins']}")
+        s = games.get(g.id, {"played": 0, "wins": 0, "draws": 0})
+        print(f"- {g.name}: played={s['played']} wins={s['wins']} draws={s.get('draws', 0)}")
     print()
     return 0
 
@@ -33,8 +33,10 @@ def cmd_play(game_id: str) -> int:
         return 2
 
     progress = load_progress()
-    win = game.play()
-    record_result(progress, game_id, played=1, wins=win)
+    result = game.play()
+    wins = 1 if result == 1 else 0
+    draws = 1 if result == -1 else 0
+    record_result(progress, game_id, played=1, wins=wins, draws=draws)
     save_progress(progress)
     return 0
 
