@@ -14,6 +14,7 @@ from cli_arcade.games.hangman import play_hangman
 from cli_arcade.games.game_2048 import play_2048
 from cli_arcade.games.typing_test import play_typing_test
 from cli_arcade.games.snake import play_snake
+from cli_arcade.games.game_of_life import play_life
 
 @dataclass(frozen=True)
 class Game:
@@ -35,6 +36,7 @@ GAMES: list[Game] = [
     Game("g2048", "2048", "Slide and merge tiles to reach 2048.", play_2048),
     Game("typing_test", "Typing Test", "Measure WPM and accuracy on a short prompt.", play_typing_test),
     Game("snake", "Snake", "Eat food, grow, and avoid walls and yourself.", play_snake),
+    Game("life", "Game of Life", "Conway's cellular automaton simulation.", play_life),
 ]
 
 def get_game(game_id: str) -> Game | None:
