@@ -42,9 +42,10 @@ def interactive_menu() -> int:
     while True:
         print("\n=== CLI Arcade ===")
         for i, g in enumerate(GAMES, start=1):
-            print(f"{i}) {g.name}")
+            print(f"{i}) {g.id} — {g.name}")
         print("S) Stats")
         print("Q) Quit")
+        print("\nTip: you can type a number (1) or a game id (rps).")
 
         choice = input("\nChoose: ").strip().lower()
         if choice == "q":
@@ -52,13 +53,21 @@ def interactive_menu() -> int:
         if choice == "s":
             cmd_stats()
             continue
+
+        # allow selecting by number
         if choice.isdigit():
             idx = int(choice) - 1
             if 0 <= idx < len(GAMES):
                 cmd_play(GAMES[idx].id)
                 continue
-        print("Invalid choice.\n")
 
+        # allow selecting by game id
+        game = get_game(choice)
+        if game:
+            cmd_play(game.id)
+            continue
+
+        print("Invalid choice. Try again.\n")
 def main() -> int:
     p = argparse.ArgumentParser(prog="cli_arcade", description="A tiny terminal arcade.")
     sub = p.add_subparsers(dest="cmd")
