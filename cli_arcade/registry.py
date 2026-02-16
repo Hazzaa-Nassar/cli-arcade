@@ -4,14 +4,14 @@ from typing import Callable
 
 from cli_arcade.games.guess_number import play_guess_number
 from cli_arcade.games.rock_paper_scissors import play_rps
-from cli_arcade.games.math_quiz import play_math_quiz
+from cli_arcade.games.tic_tac_toe import play_tic_tac_toe
 
 @dataclass(frozen=True)
 class Game:
     id: str
     name: str
     description: str
-    play: Callable[[], int]  # returns 1 if win else 0
+    play: Callable[[], int]  # returns 1 win, 0 loss/quit, -1 draw (some games)
 
 GAMES: list[Game] = [
     Game(
@@ -27,10 +27,10 @@ GAMES: list[Game] = [
         play=play_rps,
     ),
     Game(
-        id="math_quiz",
-        name="Math Quiz",
-        description="5 quick math questions. Score 4+ to win.",
-        play=play_math_quiz,
+        id="ttt",
+        name="Tic Tac Toe",
+        description="Play tic tac toe (CPU or 2-player).",
+        play=play_tic_tac_toe,
     ),
 ]
 
