@@ -11,6 +11,7 @@ from cli_arcade.games.blackjack import play_blackjack
 from cli_arcade.games.higher_lower import play_higher_lower
 from cli_arcade.games.wordle_lite import play_wordle_lite
 from cli_arcade.games.hangman import play_hangman
+from cli_arcade.games.game_2048 import play_2048
 
 @dataclass(frozen=True)
 class Game:
@@ -29,6 +30,7 @@ GAMES: list[Game] = [
     Game("higher_lower", "Higher / Lower", "Guess if the next number is higher or lower.", play_higher_lower),
     Game("wordle_lite", "Wordle-lite", "Guess the 5-letter word with feedback.", play_wordle_lite),
     Game("hangman", "Hangman", "Guess the word, one letter at a time.", play_hangman),
+    Game("g2048", "2048", "Slide and merge tiles to reach 2048.", play_2048),
 ]
 
 def get_game(game_id: str) -> Game | None:
