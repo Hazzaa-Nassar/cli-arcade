@@ -12,6 +12,7 @@ from cli_arcade.games.higher_lower import play_higher_lower
 from cli_arcade.games.wordle_lite import play_wordle_lite
 from cli_arcade.games.hangman import play_hangman
 from cli_arcade.games.game_2048 import play_2048
+from cli_arcade.games.typing_test import play_typing_test
 
 @dataclass(frozen=True)
 class Game:
@@ -31,6 +32,7 @@ GAMES: list[Game] = [
     Game("wordle_lite", "Wordle-lite", "Guess the 5-letter word with feedback.", play_wordle_lite),
     Game("hangman", "Hangman", "Guess the word, one letter at a time.", play_hangman),
     Game("g2048", "2048", "Slide and merge tiles to reach 2048.", play_2048),
+    Game("typing_test", "Typing Test", "Measure WPM and accuracy on a short prompt.", play_typing_test),
 ]
 
 def get_game(game_id: str) -> Game | None:
