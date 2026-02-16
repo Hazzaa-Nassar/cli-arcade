@@ -8,6 +8,7 @@ from cli_arcade.games.tic_tac_toe import play_tic_tac_toe
 from cli_arcade.games.math_quiz import play_math_quiz
 from cli_arcade.games.dice_poker import play_dice_poker
 from cli_arcade.games.blackjack import play_blackjack
+from cli_arcade.games.higher_lower import play_higher_lower
 
 @dataclass(frozen=True)
 class Game:
@@ -23,6 +24,7 @@ GAMES: list[Game] = [
     Game("math_quiz", "Math Quiz", "5 quick math questions. Score 4+ to win.", play_math_quiz),
     Game("dice_poker", "Dice Poker", "Roll 5 dice and beat the dealer (poker-style hands).", play_dice_poker),
     Game("blackjack", "Blackjack", "Beat the dealer without going over 21.", play_blackjack),
+    Game("higher_lower", "Higher / Lower", "Guess if the next number is higher or lower.", play_higher_lower),
 ]
 
 def get_game(game_id: str) -> Game | None:
