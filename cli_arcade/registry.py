@@ -3,6 +3,7 @@ from dataclasses import dataclass
 from typing import Callable
 
 from cli_arcade.games.guess_number import play_guess_number
+from cli_arcade.games.rock_paper_scissors import play_rps
 
 @dataclass(frozen=True)
 class Game:
@@ -17,6 +18,12 @@ GAMES: list[Game] = [
         name="Guess the Number",
         description="Guess a secret number in limited attempts.",
         play=play_guess_number,
+    ),
+    Game(
+        id="rps",
+        name="Rock Paper Scissors",
+        description="Classic RPS vs the computer.",
+        play=play_rps,
     ),
 ]
 
